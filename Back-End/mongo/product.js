@@ -40,46 +40,46 @@ product_schema.set("toJSON", {
 const Product = mongoose.model("Product", product_schema);
 
 // //export Product
-// module.exports = Product;
+module.exports = Product;
 //create new Product
-const new_product = new Product({
-  name: "B-Hydra Intensive Hydration Serum",
-  brand: "Drunk Elephant",
-  category: "Serum",
-  ingredients: [
-    "Water",
-    "Coconut Alkanes",
-    "Ammonium Acryloyldimethyltaurate",
-    "Glycerin",
-    "Pentylene Glycol",
-    "Sclerocarya Birrea Seed Oil",
-    "Wheat Amino Acids",
-    "Ananas Sativus Fruit Extract",
-    "Berberis Vulgaris Extract",
-    "Citrullus Vulgaris Fruit Extract",
-    "Lens Esculenta Fruit Extract",
-    "Pyrus Malus Fruit Extract",
-    "Caprate",
-    "Panthenol",
-    "Sodium PCA",
-    "Sodium Hyaluronate Crosspolymer",
-    "Dipotassium Glycyrrhizate",
-    "Niacinamide",
-    "Cyclodextrin",
-    "Sodium Hyaluronate",
-    "Sodium Lactate",
-    "Phenoxyethanol",
-    "Hydroxyproline",
-    "Sodium Salt Ethylenediamine Disuccinate",
-    "Citric Acid",
-    "Caprylyl Glycol",
-    "Chlorphenesin",
-    "Ethylhexylglycerin",
-  ],
-  rating: 2,
-});
+// const new_product = new Product({
+//   name: "B-Hydra Intensive Hydration Serum",
+//   brand: "Drunk Elephant",
+//   category: "Serum",
+//   ingredients: [
+//     "Water",
+//     "Coconut Alkanes",
+//     "Ammonium Acryloyldimethyltaurate",
+//     "Glycerin",
+//     "Pentylene Glycol",
+//     "Sclerocarya Birrea Seed Oil",
+//     "Wheat Amino Acids",
+//     "Ananas Sativus Fruit Extract",
+//     "Berberis Vulgaris Extract",
+//     "Citrullus Vulgaris Fruit Extract",
+//     "Lens Esculenta Fruit Extract",
+//     "Pyrus Malus Fruit Extract",
+//     "Caprate",
+//     "Panthenol",
+//     "Sodium PCA",
+//     "Sodium Hyaluronate Crosspolymer",
+//     "Dipotassium Glycyrrhizate",
+//     "Niacinamide",
+//     "Cyclodextrin",
+//     "Sodium Hyaluronate",
+//     "Sodium Lactate",
+//     "Phenoxyethanol",
+//     "Hydroxyproline",
+//     "Sodium Salt Ethylenediamine Disuccinate",
+//     "Citric Acid",
+//     "Caprylyl Glycol",
+//     "Chlorphenesin",
+//     "Ethylhexylglycerin",
+//   ],
+//   rating: 2,
+// });
 
-new_product.save().then((res) => {
-  console.log("ran");
-  mongoose.connection.close();
-});
+// new_product.save().then((res) => {
+//   console.log("ran");
+//   mongoose.connection.close();
+// });

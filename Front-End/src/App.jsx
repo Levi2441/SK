@@ -50,6 +50,9 @@ function App() {
   useEffect(ingHook, []);
   useEffect(productHook, []);
 
+  /**
+   * Rest of Code
+   */
   check_if_valid(ingredients, products);
   return <p>Hello World</p>;
 }
