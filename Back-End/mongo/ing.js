@@ -35,15 +35,16 @@ ing_schema.set("toJSON", {
 const Ing = mongoose.model("Ingredient", ing_schema);
 console.log("got here");
 //export model
-module.exports = Ing;
+// module.exports = Ing;
 
 // //add new elt to db
-// const new_ing = new Ing({
-//   name: "test",
-//   rating: 2,
-// });
+// on disodiun laureth
+const new_ing = new Ing({
+  name: "",
+  rating: 3,
+});
 
-// new_ing.save().then((res) => {
-//   console.log("ran");
-//   mongoose.connection.close();
-// });
+new_ing.save().then((res) => {
+  console.log("ran");
+  mongoose.connection.close();
+});
