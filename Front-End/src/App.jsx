@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import bridge from "./services/data";
+import Routine from "./components/Routine";
 
 /**
  * check_if_valid checks if all productss' ingredients are in the database
@@ -23,7 +24,7 @@ function check_if_valid(i, p) {
     curr_ing.forEach((indv) => {
       if (only_ing.includes(indv) === false) {
         truth = false;
-        console.log(indv);
+        //console.log(indv);
       }
     });
   });
@@ -54,7 +55,13 @@ function App() {
    * Rest of Code
    */
   check_if_valid(ingredients, products);
-  return <p>Hello World</p>;
+  // console.log(ingredients);
+  // console.log(products);
+  return (
+    <>
+      <Routine ingredients={ingredients} products={products}></Routine>
+    </>
+  );
 }
 
 export default App;
