@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import bridge from "./services/data";
 import Routine from "./components/Routine";
 import Instructions from "./components/Instructions";
-import Suggestion from "./components/Suggestion";
+import Addition from "./components/Addition";
 
 /**
  * check_if_valid checks if all productss' ingredients are in the database
@@ -63,6 +63,7 @@ function App() {
     <>
       <Instructions></Instructions>
       <Routine ingredients={ingredients} products={products}></Routine>
+      <Addition></Addition>
     </>
   );
 }
