@@ -123,17 +123,25 @@ const Output = (props) => {
     //console.log(feedback.suggestions);
     return (
       <div>
-        <p>You're overall score is {feedback.score}</p>
-        <p>Here are you're suggestions:</p>
-        <ul className="suggestions">
+        <p className="OverallScore">You're overall score is {feedback.score}</p>
+        <p className="SuggestionHeader">Here are you're suggestions:</p>
+        <ul>
           {feedback.suggestions.map((elt) => {
-            return <li key={elt}>{elt}</li>;
+            return (
+              <li key={elt} className="Suggestions">
+                {elt}
+              </li>
+            );
           })}
         </ul>
       </div>
     );
   } else {
-    return <p>Press submit when done inputting data</p>;
+    return (
+      <p className="SubmitInstructions">
+        Press submit when done inputting data
+      </p>
+    );
   }
 };
 

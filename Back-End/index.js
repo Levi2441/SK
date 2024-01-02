@@ -1,5 +1,6 @@
-/* First we have to check all the ingredients
- * of the products are found in the ingredients db
+/**
+ * This file contains the express application used to handle HTTP requests
+ *
  */
 
 /*

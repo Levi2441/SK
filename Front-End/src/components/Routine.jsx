@@ -119,7 +119,9 @@ const Routine = (props) => {
         setBox={setSerumBox}
         list={split.s}
       ></Category>
-      <button onClick={resetHandler}>{reset}</button>
+      <button onClick={resetHandler} className="SubmitButton">
+        {reset}
+      </button>
       <Output
         result={reset}
         cleanser={cleanserBox}

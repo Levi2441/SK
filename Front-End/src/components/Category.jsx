@@ -1,3 +1,5 @@
+import Product from "./ProductInfo";
+import Display from "./Display";
 /**
  * This component handles the state of the input boxes and also the display of the filter list of products
  */
@@ -20,18 +22,15 @@ const Category = (props) => {
   let displayList = list.filter((elt) => {
     return elt.name.includes(data);
   });
+
   //   console.log(displayList);
 
   return (
-    <div>
+    <div className="InputInfo">
       {" "}
-      <h1> {cat} </h1>
+      <h1 className="CategoryHeader"> {cat} </h1>
       <input value={data} onChange={handleData} />
-      <ul>
-        {displayList.map((elt) => {
-          return <li key={elt.id}>{elt.name}</li>;
-        })}
-      </ul>
+      <Display list={displayList}></Display>
     </div>
   );
 };
