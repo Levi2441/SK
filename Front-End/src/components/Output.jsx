@@ -5,19 +5,20 @@ function bad_ingredients(ingredients, product) {}
 /**
  * Creates suggestions given a product
  */
-function create_suggestion(product, products) {
+function create_suggestion(product, products, category) {
   if (product.rating > 3) {
     let safe_list = products.filter((elt) => {
-      if (elt.rating < 2) {
-        return true;
-      } else {
-        return false;
-      }
+      return elt.rating < 2 && elt.category === category;
     });
     let safe_index = Math.floor(Math.random() * (safe_list.length - 1));
-    return "A safer product is: " + safe_list[safe_index].name;
+    return (
+      "A safer, more recommended product is: " +
+      safe_list[safe_index].name +
+      " from " +
+      safe_list[safe_index].brand
+    );
   } else {
-    return "Safe Product";
+    return product.name + " is relatively safe and good to use";
   }
 }
 /**
@@ -25,9 +26,9 @@ function create_suggestion(product, products) {
  */
 function sugs(info, products) {
   let res = [];
-  let cleanser_sug = create_suggestion(info.c, products);
-  let toner_sug = create_suggestion(info.t, products);
-  let serum_sug = create_suggestion(info.s, products);
+  let cleanser_sug = create_suggestion(info.c, products, "Cleanser");
+  let toner_sug = create_suggestion(info.t, products, "Toner");
+  let serum_sug = create_suggestion(info.s, products, "Serum");
 
   res.push(cleanser_sug);
   res.push(toner_sug);
@@ -64,28 +65,13 @@ function get_Object(cleanser, toner, serum, products) {
   //   }
   return {
     c: products.filter((elt) => {
-      if (elt.name === cleanser) {
-        return true;
-      } else {
-        return false;
-      }
-      //   console.log(elt.name);
-      //   console.log(cleanser);
-      //   elt.name === cleanser;
+      return elt.name === cleanser;
     })[0],
     t: products.filter((elt) => {
-      if (elt.name === toner) {
-        return true;
-      } else {
-        return false;
-      }
+      return elt.name === toner;
     })[0],
     s: products.filter((elt) => {
-      if (elt.name === serum) {
-        return true;
-      } else {
-        return false;
-      }
+      return elt.name === serum;
     })[0],
   };
 }
@@ -139,7 +125,7 @@ const Output = (props) => {
       <div>
         <p>You're overall score is {feedback.score}</p>
         <p>Here are you're suggestions:</p>
-        <ul>
+        <ul className="suggestions">
           {feedback.suggestions.map((elt) => {
             return <li key={elt}>{elt}</li>;
           })}

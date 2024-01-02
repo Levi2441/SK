@@ -54,7 +54,7 @@ function App() {
   /**
    * Rest of Code
    */
-  check_if_valid(ingredients, products);
+  //check_if_valid(ingredients, products);
   // console.log(ingredients);
   // console.log(products);
   return (
