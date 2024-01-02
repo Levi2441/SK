@@ -1,6 +1,37 @@
 import { useState, useEffect } from "react";
 import Category from "./Category";
+import Output from "./Output";
 
+/**
+ * Checks if product name is in products
+ */
+function check_name(name, products) {
+  let res = products.filter((elt) => {
+    if (elt.name === name) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  if (res.length === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+/**
+ * Checks if inputted product names are valid
+ */
+function products_are_valid(p1, p2, p3, products) {
+  let res1 = check_name(p1, products);
+  let res2 = check_name(p2, products);
+  let res3 = check_name(p3, products);
+  if (((res1 === res2) === res3) === true) {
+    return true;
+  } else {
+    return false;
+  }
+}
 /**
  * Parse information from props products into categories -> data structures
  */
@@ -19,6 +50,9 @@ function parse(products) {
   };
 }
 
+/**
+ * This component contains the state for the cleanser, toner, and serum inputs
+ */
 //props should contain two arrays of objects
 const Routine = (props) => {
   const input_ing = props.ingredients;
@@ -46,12 +80,24 @@ const Routine = (props) => {
    * if state is in reset, then run alg and display info
    */
   const [reset, setReset] = useState("submit");
-  if (reset === "submit") {
-    //nothing should happen
-  } else {
-    //display alg
-    setReset("submit");
-  }
+  const resetHandler = () => {
+    if (reset === "submit") {
+      //have to check if the name's are valid
+      if (
+        products_are_valid(cleanserBox, tonerBox, serumBox, props.products) ===
+        true
+      ) {
+        setReset("reset");
+      } else {
+        alert("Check that the name matches what is in the database");
+      }
+    } else {
+      setReset("submit");
+      setCleanserBox("");
+      setTonerBox("");
+      setSerumBox("");
+    }
+  };
 
   return (
     <div>
@@ -73,6 +119,15 @@ const Routine = (props) => {
         setBox={setSerumBox}
         list={split.s}
       ></Category>
+      <button onClick={resetHandler}>{reset}</button>
+      <Output
+        result={reset}
+        cleanser={cleanserBox}
+        toner={tonerBox}
+        serum={serumBox}
+        ingredients={props.ingredients}
+        products={props.products}
+      ></Output>
     </div>
   );
 };
