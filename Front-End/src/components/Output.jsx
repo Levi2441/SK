@@ -5,10 +5,10 @@ function bad_ingredients(ingredients, product) {}
 /**
  * Creates suggestions given a product
  */
-function create_suggestion(product, products, category) {
+function create_suggestion(product, products) {
   if (product.rating > 3) {
     let safe_list = products.filter((elt) => {
-      return elt.rating < 2 && elt.category === category;
+      return elt.rating < 2 && elt.category === product.category;
     });
     let safe_index = Math.floor(Math.random() * (safe_list.length - 1));
     return (
@@ -24,21 +24,19 @@ function create_suggestion(product, products, category) {
 /**
  * returns all suggestions
  */
-function sugs(info, products) {
+function sugs(info, products, num) {
   let res = [];
-  let cleanser_sug = create_suggestion(info.c, products, "Cleanser");
-  let toner_sug = create_suggestion(info.t, products, "Toner");
-  let serum_sug = create_suggestion(info.s, products, "Serum");
+  for (let i = 0; i < num; i++) {
+    let new_sug = create_suggestion(info[i], products);
+    res.push(new_sug);
+  }
 
-  res.push(cleanser_sug);
-  res.push(toner_sug);
-  res.push(serum_sug);
   return res;
 }
 /**
  * Function that gets the products from the products array in their object form
  */
-function get_Object(cleanser, toner, serum, products) {
+function get_Object(inputs, products, num) {
   //   let cleanserObject = null;
   //   let tonerObject = null;
   //   let serumObject = null;
@@ -63,33 +61,43 @@ function get_Object(cleanser, toner, serum, products) {
   //       elt.name === serum;
   //     });
   //   }
-  return {
-    c: products.filter((elt) => {
-      return elt.name === cleanser;
-    })[0],
-    t: products.filter((elt) => {
-      return elt.name === toner;
-    })[0],
-    s: products.filter((elt) => {
-      return elt.name === serum;
-    })[0],
-  };
+  let res = [];
+  for (let i = 0; i < num; i++) {
+    let curr_product = products.filter((elt) => {
+      return elt.name === inputs[i];
+    })[0];
+    res.push(curr_product);
+  }
+  return res;
 }
 /**
  * Returns and object containing the overall score of the routine and also feedback
  */
-function alg(cleanser, toner, serum, ing, products) {
+function alg(inputs, ing, products, num) {
   //console.log(cleanser);
   //console.log(products);
-  let info = get_Object(cleanser, toner, serum, products);
+  //info is an array that contains the product objects themselves
+  let info = get_Object(inputs, products, num);
   //First we calculate the overall score (take the average score of the three)
   //console.log(info);
+
+  // console.log(info.length);
+  // console.log(
+  //   info.reduce((accum, elt) => {
+  //     console.log(elt.rating);
+  //     console.log(accum);
+  //     return accum + elt.rating;
+  //   }, 0) / info.length
+  // );
   let overall_score = Math.floor(
-    (info.c.rating + info.t.rating + info.s.rating) / 3
+    info.reduce((accum, elt) => {
+      return accum + elt.rating;
+    }, 0) / info.length
   );
 
-  let suggestions = sugs(info, products);
+  let suggestions = sugs(info, products, num);
 
+  // console.log(overall_score);
   return {
     score: overall_score,
     suggestions: suggestions,
@@ -100,12 +108,12 @@ function alg(cleanser, toner, serum, ing, products) {
  * This component handles the feedback based on the state of result variable and also the input boxes
  */
 const Output = (props) => {
+  //num of boxes
+  let number = props.num;
   //result state
   let resultState = props.result;
-  //User input for cleanser, toner, and serum, could be "N/A"
-  let cleanserInput = props.cleanser;
-  let tonerInput = props.toner;
-  let serumInput = props.serum;
+  //User input for cleanser, toner, and serum, all strings
+  let inputs = [props.cleanser, props.toner, props.serum];
 
   //list of ingredients and products
   let ingredients = props.ingredients;
@@ -113,13 +121,7 @@ const Output = (props) => {
 
   //for now, let the algorithm be simple
   if (resultState === "reset") {
-    let feedback = alg(
-      cleanserInput,
-      tonerInput,
-      serumInput,
-      ingredients,
-      products
-    );
+    let feedback = alg(inputs, ingredients, products, number);
     //console.log(feedback.suggestions);
     return (
       <div>

@@ -1,6 +1,7 @@
 import Product from "./ProductInfo";
 const Display = (props) => {
   const list = props.list;
+  //console.log(list);
   if (list.length > 3) {
     return (
       <p>

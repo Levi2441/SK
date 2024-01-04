@@ -22,15 +22,26 @@ function check_name(name, products) {
 /**
  * Checks if inputted product names are valid
  */
-function products_are_valid(p1, p2, p3, products) {
+function products_are_valid(p1, p2, p3, products, number) {
   let res1 = check_name(p1, products);
   let res2 = check_name(p2, products);
   let res3 = check_name(p3, products);
-  if (((res1 === res2) === res3) === true) {
-    return true;
-  } else {
-    return false;
+  for (let i = 0; i < number; i++) {
+    if (i === 0) {
+      if (res1 === false) {
+        return false;
+      }
+    } else if (i === 1) {
+      if (res2 === false) {
+        return false;
+      }
+    } else {
+      if (res3 === false) {
+        return false;
+      }
+    }
   }
+  return true;
 }
 /**
  * Parse information from props products into categories -> data structures
@@ -63,11 +74,57 @@ const Routine = (props) => {
    * Note when you press submit we need the data from cleanserBox, tonerBox, and serumBox, so we need access to their data in this file
    */
   /**
-   * States for Cleanser
+   * name for cleanserBox,tonerBox,and serumBox should be generalized to product1,product2,product3
    */
   const [cleanserBox, setCleanserBox] = useState("");
   const [tonerBox, setTonerBox] = useState("");
   const [serumBox, setSerumBox] = useState("");
+
+  const [boxes, setBoxes] = useState(0);
+  let categories = [
+    <Category
+      category="Product 1"
+      box={cleanserBox}
+      setBox={setCleanserBox}
+      list={props.products}
+    ></Category>,
+    <Category
+      category="Product 2"
+      box={tonerBox}
+      setBox={setTonerBox}
+      list={props.products}
+    ></Category>,
+    <Category
+      category="Product 3"
+      box={serumBox}
+      setBox={setSerumBox}
+      list={props.products}
+    ></Category>,
+  ];
+
+  const deleteHandler = () => {
+    if (boxes === 0) {
+      alert("Please add a product first");
+    } else {
+      setBoxes(boxes - 1);
+
+      if (boxes === 1) {
+        setCleanserBox("");
+      } else if (boxes === 2) {
+        setTonerBox("");
+      } else {
+        setSerumBox("");
+      }
+    }
+  };
+  const addHandler = () => {
+    if (boxes === 3) {
+      alert("Already maximum number of products");
+    } else {
+      setBoxes(boxes + 1);
+    }
+  };
+
   //const [cleanserList, setCleanserList] = useState(split.c);
   /**
    * Each category will have a box to input the name
@@ -84,8 +141,13 @@ const Routine = (props) => {
     if (reset === "submit") {
       //have to check if the name's are valid
       if (
-        products_are_valid(cleanserBox, tonerBox, serumBox, props.products) ===
-        true
+        products_are_valid(
+          cleanserBox,
+          tonerBox,
+          serumBox,
+          props.products,
+          boxes
+        ) === true
       ) {
         setReset("reset");
       } else {
@@ -99,30 +161,34 @@ const Routine = (props) => {
     }
   };
 
+  //console.log("boxes to display");
+  //console.log(boxes);
+  let show_categories = [];
+  for (let i = 0; i < boxes; i++) {
+    show_categories.push(categories[i]);
+  }
   return (
     <div>
-      <Category
-        category="Cleanser"
-        box={cleanserBox}
-        setBox={setCleanserBox}
-        list={split.c}
-      ></Category>
-      <Category
-        category="Toner"
-        box={tonerBox}
-        setBox={setTonerBox}
-        list={split.t}
-      ></Category>
-      <Category
-        category="Serum"
-        box={serumBox}
-        setBox={setSerumBox}
-        list={split.s}
-      ></Category>
+      <div className="ADButtons">
+        <button onClick={addHandler} className="AddButton">
+          {" "}
+          +{" "}
+        </button>
+        <button onClick={deleteHandler} className="DeleteButton">
+          {" "}
+          -{" "}
+        </button>
+      </div>
+
+      <p></p>
+      {show_categories.map((elt) => {
+        return elt;
+      })}
       <button onClick={resetHandler} className="SubmitButton">
         {reset}
       </button>
       <Output
+        num={boxes}
         result={reset}
         cleanser={cleanserBox}
         toner={tonerBox}
