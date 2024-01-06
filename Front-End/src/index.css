@@ -189,3 +189,58 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.ADButtons {
+  font-size: 12px;
+  width: 10%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.AddButton{
+  
+  font-size: 18px;
+  padding: 10px 20px;
+
+  border-radius: 50px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.AddButton:hover {
+  border-color: #646cff;
+}
+.AddButton:focus,
+.AddButton:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.DeleteButton{
+  
+  font-size: 18px;
+  padding: 10px 20px;
+
+  border-radius: 50px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.DeleteButton:hover {
+  border-color: #646cff;
+}
+.DeleteButton:focus,
+.DeleteButton:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

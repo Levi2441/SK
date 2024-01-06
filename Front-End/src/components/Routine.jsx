@@ -147,11 +147,16 @@ const Routine = (props) => {
           serumBox,
           props.products,
           boxes
-        ) === true
+        ) === true &&
+        boxes > 0
       ) {
         setReset("reset");
       } else {
-        alert("Check that the name matches what is in the database");
+        if (boxes === 0) {
+          alert("Add Products First");
+        } else {
+          alert("Check that the name matches what is in the database");
+        }
       }
     } else {
       setReset("submit");
