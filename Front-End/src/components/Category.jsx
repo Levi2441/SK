@@ -30,10 +30,10 @@ const Category = (props) => {
   //console.log(displayList);
 
   return (
-    <div className="InputInfo">
+    <div className="Category">
       {" "}
       <h1 className="CategoryHeader"> {cat} </h1>
-      <input value={data} onChange={handleData} />
+      <input value={data} onChange={handleData} className="InputInfo" />
       <Display list={displayList}></Display>
     </div>
   );

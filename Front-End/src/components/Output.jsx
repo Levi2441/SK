@@ -124,13 +124,13 @@ const Output = (props) => {
     let feedback = alg(inputs, ingredients, products, number);
     //console.log(feedback.suggestions);
     return (
-      <div>
+      <div className="Output">
         <p className="OverallScore">You're overall score is {feedback.score}</p>
         <p className="SuggestionHeader">Here are you're suggestions:</p>
-        <ul>
+        <ul className="Suggestions">
           {feedback.suggestions.map((elt) => {
             return (
-              <li key={elt} className="Suggestions">
+              <li key={elt} className="IndividualSuggestions">
                 {elt}
               </li>
             );

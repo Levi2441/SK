@@ -14,7 +14,7 @@ const Display = (props) => {
     );
   } else {
     return (
-      <ul>
+      <ul className="ProductInfoList">
         {list.map((elt) => {
           return <Product key={elt.id} prod={elt}></Product>;
         })}
