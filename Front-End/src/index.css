@@ -244,8 +244,6 @@
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
-  width: 20%;
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -302,4 +300,44 @@
 .DeleteButton:focus,
 .DeleteButton:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.Cleanser {
+  background-color: rgb(105, 199, 246);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+.Toner {
+  background-color: rgb(29, 128, 13);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+.Serum {
+  background-color: rgb(246, 105, 105);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+
+.Brand {
+  background-color: rgb(119, 105, 246);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+
+.GreenRating {
+  background-color: rgb(47, 255, 0);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+
+.YellowRating {
+  background-color: rgb(255, 242, 0);
+  border : 1px solid transparent;
+  border-radius: 5px;
+}
+
+.RedRating {
+  background-color: rgb(255, 0, 0);
+  border : 1px solid transparent;
+  border-radius: 5px;
 }

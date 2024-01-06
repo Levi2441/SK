@@ -34,7 +34,7 @@ const Category = (props) => {
       {" "}
       <h1 className="CategoryHeader"> {cat} </h1>
       <input value={data} onChange={handleData} className="InputInfo" />
-      <Display list={displayList}></Display>
+      <Display list={displayList} setter={setData}></Display>
     </div>
   );
 };

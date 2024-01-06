@@ -1,6 +1,7 @@
 import Product from "./ProductInfo";
 const Display = (props) => {
   const list = props.list;
+  const setter = props.setter;
   //console.log(list);
   if (list.length > 3) {
     return (
@@ -16,7 +17,7 @@ const Display = (props) => {
     return (
       <ul className="ProductInfoList">
         {list.map((elt) => {
-          return <Product key={elt.id} prod={elt}></Product>;
+          return <Product key={elt.id} prod={elt} setter={setter}></Product>;
         })}
       </ul>
     );

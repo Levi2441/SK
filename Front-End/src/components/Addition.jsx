@@ -34,7 +34,7 @@ const Addition = () => {
     <>
       <p></p>
       <p className="FormInstructions">
-        Form: Input name of product in top box, and brand of product in bottom
+        Form: Input the name of product in top box, and the brand in the bottom
         box
       </p>
       <form className="InputInfo">

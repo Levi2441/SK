@@ -1,3 +1,4 @@
+import Score from "./Score";
 /**
  * Returns a list of up to 3 bad ingredients that make the product potentially harmful
  */
@@ -125,7 +126,9 @@ const Output = (props) => {
     //console.log(feedback.suggestions);
     return (
       <div className="Output">
-        <p className="OverallScore">You're overall score is {feedback.score}</p>
+        <p className="OverallScore">
+          You're overall score is <Score rating={feedback.score}></Score>
+        </p>
         <p className="SuggestionHeader">Here are you're suggestions:</p>
         <ul className="Suggestions">
           {feedback.suggestions.map((elt) => {
