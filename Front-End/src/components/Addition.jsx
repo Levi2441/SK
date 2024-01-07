@@ -31,7 +31,7 @@ const Addition = () => {
   };
 
   return (
-    <>
+    <div className="BottomContainer">
       <p></p>
       <p className="FormInstructions">
         Form: Input the name of product in top box, and the brand in the bottom
@@ -49,7 +49,7 @@ const Addition = () => {
           add
         </button>
       </form>
-    </>
+    </div>
   );
 };
 

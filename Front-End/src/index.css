@@ -59,6 +59,10 @@
 } */
 .Category { 
   text-align: center;
+  display : flex;
+  flex-direction: column;
+  align-items : center;
+  justify-content: center;
 
   margin-left : 10%;
   margin-right : 10%;
@@ -341,3 +345,11 @@
   border : 1px solid transparent;
   border-radius: 5px;
 }
+
+.BottomContainer {
+  margin : 1rem;
+  
+
+  display : flex;
+  flex-direction: column;
+} 

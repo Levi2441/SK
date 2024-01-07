@@ -9,9 +9,11 @@ function bad_ingredients(ingredients, product) {}
 function create_suggestion(product, products) {
   if (product.rating > 3) {
     let safe_list = products.filter((elt) => {
-      return elt.rating < 2 && elt.category === product.category;
+      return elt.rating < 3 && elt.category === product.category;
     });
     let safe_index = Math.floor(Math.random() * (safe_list.length - 1));
+    console.log(safe_list);
+    console.log(safe_index);
     return (
       "A safer, more recommended product is: " +
       safe_list[safe_index].name +
@@ -142,11 +144,7 @@ const Output = (props) => {
       </div>
     );
   } else {
-    return (
-      <p className="SubmitInstructions">
-        Press submit when done inputting data
-      </p>
-    );
+    return <p className="SubmitInstructions"></p>;
   }
 };
 

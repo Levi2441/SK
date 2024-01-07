@@ -15,11 +15,19 @@ const Category = (props) => {
   //console.log(data);
   const list = props.list;
 
+  const reset = props.reset;
+  const resetState = props.resetState;
+
   const handleData = (event) => {
     //(event.target.value);
     //change the data
-
-    setData(event.target.value);
+    if (reset === "reset") {
+      // console.log("reached");
+      resetState("submit");
+      setData(event.target.value);
+    } else {
+      setData(event.target.value);
+    }
   };
   //results
 

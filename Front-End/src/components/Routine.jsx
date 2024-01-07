@@ -81,24 +81,33 @@ const Routine = (props) => {
   const [serumBox, setSerumBox] = useState("");
 
   const [boxes, setBoxes] = useState(0);
+
+  const [reset, setReset] = useState("submit");
+
   let categories = [
     <Category
       category="Product 1"
       box={cleanserBox}
       setBox={setCleanserBox}
       list={props.products}
+      reset={reset}
+      resetState={setReset}
     ></Category>,
     <Category
       category="Product 2"
       box={tonerBox}
       setBox={setTonerBox}
       list={props.products}
+      reset={reset}
+      resetState={setReset}
     ></Category>,
     <Category
       category="Product 3"
       box={serumBox}
       setBox={setSerumBox}
       list={props.products}
+      reset={reset}
+      resetState={setReset}
     ></Category>,
   ];
 
@@ -136,7 +145,6 @@ const Routine = (props) => {
    * if state is in submit, then do not run alg
    * if state is in reset, then run alg and display info
    */
-  const [reset, setReset] = useState("submit");
   const resetHandler = () => {
     if (reset === "submit") {
       //have to check if the name's are valid
