@@ -86,6 +86,7 @@ const Routine = (props) => {
 
   let categories = [
     <Category
+      key="1"
       category="Product 1"
       box={cleanserBox}
       setBox={setCleanserBox}
@@ -94,6 +95,7 @@ const Routine = (props) => {
       resetState={setReset}
     ></Category>,
     <Category
+      key="2"
       category="Product 2"
       box={tonerBox}
       setBox={setTonerBox}
@@ -102,6 +104,7 @@ const Routine = (props) => {
       resetState={setReset}
     ></Category>,
     <Category
+      key="3"
       category="Product 3"
       box={serumBox}
       setBox={setSerumBox}
