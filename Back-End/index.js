@@ -4,7 +4,7 @@ const app = require("./app");
  * Listen for requests
  */
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 // console.log('Environment:', process.env.NODE_ENV);
 // console.log('Port:', PORT);
