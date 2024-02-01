@@ -1,7 +1,7 @@
 /* @tailwind base;
 @tailwind components;
-@tailwind utilities; */
-
+@tailwind utilities;
+ */
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -17,7 +17,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.MainInstructionsHeader{
+.MainInstructionsHeader {
   text-align: center;
   /* display : inline; */
 
@@ -31,12 +31,12 @@
   /* justify-content: center;
   align-items: center; */
   /* background-color: green; */
-  text-align : center;
-  padding : 0;
-  margin-left : 15%;
+  text-align: center;
+  padding: 0;
+  margin-left: 15%;
   margin-right: 15%;
   margin-top: 0;
-  margin-bottom:0;
+  margin-bottom: 0;
 
   border-radius: 10px;
   border: 1px solid transparent;
@@ -62,17 +62,17 @@
   cursor: pointer;
   transition: border-color 0.25s;
 } */
-.Category { 
+.Category {
   text-align: center;
-  display : flex;
+  display: flex;
   flex-direction: column;
-  align-items : center;
+  align-items: center;
   justify-content: center;
 
-  margin-left : 10%;
-  margin-right : 10%;
-  margin-top : 1rem;
-  margin-bottom : 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   /* display: flex;
   justify-content: center;
   align-items: center; */
@@ -85,37 +85,33 @@
   /* cursor: pointer; */
   transition: border-color 0.25s;
 }
-.CategoryHeader{
+.CategoryHeader {
   /* width: 10%;
   margin: 0 auto; */
-  margin-left : 15%;
-  margin-right: 15%
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .InputInfo {
   /* margin: 0 auto; */
   /* display : inline-block; */
-  margin-left : 15%;
+  margin-left: 15%;
   margin-right: 15%;
   text-align: center;
 }
 
-.ProductInfoList{
+.ProductInfoList {
   list-style-type: none;
-  padding : 0;
+  padding: 0;
   /* margin: 0;
   padding: 0;
   width: 30%; */
   /* margin: 0 auto; */
-  margin-left : 15%;
+  margin-left: 15%;
   margin-right: 15%;
   text-align: center;
-
-  
 }
 .ProductInfo {
-   
-
   border-radius: 10px;
   border: 1px solid transparent;
   font-size: 1em;
@@ -133,7 +129,7 @@
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.SubmitButton{
+.SubmitButton {
   position: relative;
   top: 50%;
   left: 50%;
@@ -171,7 +167,6 @@
 
 .Output {
   text-align: center;
-  
 }
 .OverallScore {
   font-weight: 500;
@@ -191,17 +186,17 @@
   text-align: center;
 }
 
-.Suggestions{
-  margin : 0;
-  padding : 0;
+.Suggestions {
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
-.IndividualSuggestions{
+.IndividualSuggestions {
   list-style-type: none;
   margin-left: 25%;
   margin-right: 25%;
   margin-top: 1rem;
-  margin-bottom:1rem;
+  margin-bottom: 1rem;
   padding: 0;
   /* width: 30%; */
   /* text-align: center; */
@@ -224,9 +219,7 @@
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
-.AdditionSubmit{
-  
+.AdditionSubmit {
   font-size: 18px;
   padding: 10px 20px;
 
@@ -263,8 +256,7 @@
   text-align: center;
 }
 
-.AddButton{
-  
+.AddButton {
   font-size: 18px;
   padding: 10px 20px;
 
@@ -287,8 +279,7 @@
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-.DeleteButton{
-  
+.DeleteButton {
   font-size: 18px;
   padding: 10px 20px;
 
@@ -313,48 +304,47 @@
 
 .Cleanser {
   background-color: rgb(105, 199, 246);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 .Toner {
   background-color: rgb(29, 128, 13);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 .Serum {
   background-color: rgb(246, 105, 105);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .Brand {
   background-color: rgb(119, 105, 246);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .GreenRating {
   background-color: rgb(47, 255, 0);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .YellowRating {
   background-color: rgb(255, 242, 0);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .RedRating {
   background-color: rgb(255, 0, 0);
-  border : 1px solid transparent;
+  border: 1px solid transparent;
   border-radius: 5px;
 }
 
 .BottomContainer {
-  margin : 1rem;
-  
+  margin: 1rem;
 
-  display : flex;
+  display: flex;
   flex-direction: column;
-} 
+}
