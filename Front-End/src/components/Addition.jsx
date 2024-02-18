@@ -20,8 +20,11 @@ const Addition = () => {
       };
       // console.log(new_suggestion);
       bridge.addProduct(new_suggestion).then((res) => {
-        // console.log(res);
-        alert(res.data);
+        console.log(res.data);
+        alert(
+          res.data.name +
+            " was added to the database -- Refresh the page to take effect"
+        );
         setSuggestionBoxBrand("");
         setSuggestionBoxProduct("");
       });

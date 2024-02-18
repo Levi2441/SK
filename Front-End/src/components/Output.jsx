@@ -56,16 +56,22 @@ function return_weighted_scores(dict, product) {
 /**
  * Creates suggestions given a product
  */
-function create_suggestion(product, products) {
-  if (product.rating > 3) {
+function create_suggestion(ing, product, products) {
+  let product_rating = return_weighted_scores(ing, product);
+  if (product_rating > 3) {
     let safe_list = products.filter((elt) => {
-      return elt.rating < 3 && elt.category === product.category;
+      return (
+        return_weighted_scores(ing, elt) < 3 &&
+        elt.category === product.category
+      );
     });
     let safe_index = Math.floor(Math.random() * (safe_list.length - 1));
     // console.log(safe_list);
     // console.log(safe_index);
     return (
-      "A safer, more recommended product is: " +
+      "Instead of " +
+      product.name +
+      ", a safer, more recommended product is: " +
       safe_list[safe_index].name +
       " from " +
       safe_list[safe_index].brand
@@ -77,10 +83,10 @@ function create_suggestion(product, products) {
 /**
  * returns all suggestions
  */
-function sugs(info, products, num) {
+function sugs(info, ing, products, num) {
   let res = [];
   for (let i = 0; i < num; i++) {
-    let new_sug = create_suggestion(info[i], products);
+    let new_sug = create_suggestion(ing, info[i], products);
     res.push(new_sug);
   }
 
@@ -150,7 +156,7 @@ function alg(inputs, ing, products, num) {
     }, 0) / info.length
   );
 
-  let suggestions = sugs(info, products, num);
+  let suggestions = sugs(info, ing, products, num);
 
   // console.log(overall_score);
   return {

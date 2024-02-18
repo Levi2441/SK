@@ -139,9 +139,7 @@ router.post("/api/suggestions", (request, response) => {
               product_object
                 .save()
                 .then((res) => {
-                  response
-                    .status(200)
-                    .send("Product Added to Database Successfully");
+                  response.status(200).json(res);
                 })
                 .catch((err) => {
                   console.log(err);
