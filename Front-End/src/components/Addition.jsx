@@ -5,18 +5,23 @@ const Addition = () => {
   const [suggestionBoxProduct, setSuggestionBoxProduct] = useState("");
   const [suggestionBoxBrand, setSuggestionBoxBrand] = useState("");
 
-  const suggestionButtonChange = () => {
+  const suggestionButtonChange = (event) => {
+    event.preventDefault();
+    //console.log("reached");
     if (suggestionBoxProduct === "") {
       alert("Enter in product name");
-    } else if (suggestionBoxBrand === "") {
-      alert("Enter in brand name");
+
+      // } else if (suggestionBoxBrand === "") {
+      //   alert("Enter in brand name");
     } else {
       let new_suggestion = {
-        name: suggestionBoxProduct,
-        brand: suggestionBoxBrand,
+        url: suggestionBoxProduct,
+        //brand: suggestionBoxBrand,
       };
-      bridge.addProduct(new_suggestion).then(() => {
-        alert("Success!");
+      // console.log(new_suggestion);
+      bridge.addProduct(new_suggestion).then((res) => {
+        // console.log(res);
+        alert(res.data);
         setSuggestionBoxBrand("");
         setSuggestionBoxProduct("");
       });
@@ -34,17 +39,17 @@ const Addition = () => {
     <div className="BottomContainer">
       <p></p>
       <p className="FormInstructions">
-        Form: Input the name of product in top box, and the brand in the bottom
-        box
+        Form: To create a query, enter in details about name and brand of the
+        product Ex. COSRX Propolis Toner
       </p>
       <form className="InputInfo">
         <input
           onChange={suggestionBoxProductChange}
           value={suggestionBoxProduct}
         />
-        <p></p>
+        {/* <p></p>
         <input onChange={suggestionBoxBrandChange} value={suggestionBoxBrand} />
-        <p></p>
+        <p></p> */}
         <button className="AdditionSubmit" onClick={suggestionButtonChange}>
           add
         </button>

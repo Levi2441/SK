@@ -12,8 +12,8 @@ function create_suggestion(product, products) {
       return elt.rating < 3 && elt.category === product.category;
     });
     let safe_index = Math.floor(Math.random() * (safe_list.length - 1));
-    console.log(safe_list);
-    console.log(safe_index);
+    // console.log(safe_list);
+    // console.log(safe_index);
     return (
       "A safer, more recommended product is: " +
       safe_list[safe_index].name +
@@ -92,6 +92,8 @@ function alg(inputs, ing, products, num) {
   //     return accum + elt.rating;
   //   }, 0) / info.length
   // );
+
+  //just taking the average
   let overall_score = Math.floor(
     info.reduce((accum, elt) => {
       return accum + elt.rating;

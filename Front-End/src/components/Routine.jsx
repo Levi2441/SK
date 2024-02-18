@@ -118,6 +118,7 @@ const Routine = (props) => {
     if (boxes === 0) {
       alert("Please add a product first");
     } else {
+      setReset("submit");
       setBoxes(boxes - 1);
 
       if (boxes === 1) {
@@ -134,6 +135,7 @@ const Routine = (props) => {
       alert("Already maximum number of products");
     } else {
       setBoxes(boxes + 1);
+      setReset("submit");
     }
   };
 
