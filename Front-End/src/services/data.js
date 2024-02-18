@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const base_url = "http://localhost:3001";
+// const base_url = "http://localhost:3001";
+const base_url = "";
 
 const getAllProducts = () => {
   return axios.get(base_url + "/api/products");

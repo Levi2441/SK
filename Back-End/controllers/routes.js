@@ -86,7 +86,7 @@ router.post("/api/suggestions", (request, response) => {
   //   });
   //console.log(query);
   axios
-    .post("http://localhost:3002/product", query)
+    .post("https://web-parser-yg8p.onrender.com/product", query)
     .then((res) => {
       //either the all the informatoin or an object with name set to "No Objects found"
       let product = res.data;
