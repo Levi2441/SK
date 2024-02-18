@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const axios = require("axios");
 
 const Ing = require("../mongo/ing");
 const Product = require("../mongo/product");
@@ -65,20 +66,33 @@ router.post("/api/suggestions", (request, response) => {
   let sug_data = request.body;
 
   //build the new suggestion
-  let new_sug = Suggestion({
-    name: sug_data.name,
-    brand: sug_data.brand,
-  });
+  let query = {
+    url: sug_data.url,
+  };
+  // let new_sug = Suggestion({
+  //   name: sug_data.name,
+  //   brand: sug_data.brand,
+  // });
 
   //invoke .save() method
 
-  new_sug
-    .save()
+  // new_sug
+  //   .save()
+  //   .then((res) => {
+  //     response.status(200).json(res);
+  //   })
+  //   .catch((error) => {
+  //     console.log("Error adding suggestion");
+  //   });
+  console.log(query);
+  axios
+    .post("http://localhost:3002/product", query)
     .then((res) => {
-      response.status(200).json(res);
+      //console.log(res);
+      response.status(200).send(res.data);
     })
-    .catch((error) => {
-      console.log("Error adding suggestion");
+    .catch((err) => {
+      console.log(err);
     });
 });
 
