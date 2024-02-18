@@ -35,13 +35,22 @@ function check_if_valid(i, p) {
 }
 
 function App() {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState({});
   const [products, setProducts] = useState([]);
 
   //ingredient and product hooks
   const ingHook = () => {
     bridge.getAllIngredients().then((res) => {
-      setIngredients(res.data);
+      let ingredients = res.data;
+      let dict = {};
+
+      for (let i = 0; i < ingredients.length; i++) {
+        //standardize to lower case
+        let name_of_ing = ingredients[i].name.toLowerCase();
+        let safety_of_ing = ingredients[i].rating;
+        dict[name_of_ing] = safety_of_ing;
+      }
+      setIngredients(dict);
     });
   };
   const productHook = () => {

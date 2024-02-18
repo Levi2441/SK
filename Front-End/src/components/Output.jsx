@@ -3,6 +3,56 @@ import Score from "./Score";
  * Returns a list of up to 3 bad ingredients that make the product potentially harmful
  */
 function bad_ingredients(ingredients, product) {}
+
+function product_weight(num_of_ingredients) {
+  return 1 / (1 + Math.exp(0.2 * -(num_of_ingredients - 25)));
+}
+/**
+ * Returns weight provided by sigmoid function given an ingredient_score
+ */
+function ingredient_weight(ingredient_score) {
+  return (1 / (1 + Math.exp(-(ingredient_score - 5)))) * 2;
+}
+/**
+ * given a list of values, returns the weighted score
+ */
+function weighted_score(values) {
+  let total = 0;
+  for (let i = 0; i < values.length; i++) {
+    total += values[i] * ingredient_weight(values[i]);
+  }
+  return Math.floor(total / values.length);
+}
+/**
+ * Takes a list of ingredients and returns a list of their scores -- given ingredients dictionary
+ */
+function return_scores(dict, ings) {
+  let res = [];
+  for (let i = 0; i < ings.length; i++) {
+    let curr_ing = ings[i].toLowerCase();
+    if (curr_ing in dict) {
+      let ing_score = dict[curr_ing];
+      res.push(ing_score);
+    }
+  }
+  return res;
+}
+/**
+ * Takes in a product, and returns its weighted score --
+ * weight depends on number of elements -- the more elements, the more you rely on the overall_score
+ *
+ */
+function return_weighted_scores(dict, product) {
+  let product_ingredients = product.ingredients;
+  let ewg_score = product.rating;
+  let scores = return_scores(dict, product_ingredients);
+  let weights = product_weight(product_ingredients.length);
+
+  return (1 - weights) * weighted_score(scores) + weights * ewg_score;
+}
+/**
+ * Takes in a list of products, and returns their average weighted scores
+ */
 /**
  * Creates suggestions given a product
  */
@@ -96,7 +146,7 @@ function alg(inputs, ing, products, num) {
   //just taking the average
   let overall_score = Math.floor(
     info.reduce((accum, elt) => {
-      return accum + elt.rating;
+      return accum + (return_weighted_scores(ing, elt) + 1);
     }, 0) / info.length
   );
 
@@ -124,6 +174,7 @@ const Output = (props) => {
   let ingredients = props.ingredients;
   let products = props.products;
 
+  //console.log(ingredients);
   //for now, let the algorithm be simple
   if (resultState === "reset") {
     let feedback = alg(inputs, ingredients, products, number);
